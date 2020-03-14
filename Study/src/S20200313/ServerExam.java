@@ -1,5 +1,14 @@
 package S20200313;
 
+//| 블로킹이 해제되는 경우                      | 리턴 값        |
+//|---------------------------------------------|----------------|
+//| 상대방이 데이터를 보냄                      | 읽은 바이트 수 |
+//| 상대방이 정상적으로 Socket의 close()를 호출 | -1             |
+//| 상대방이 비정상적으로 종료                  | IOException    |
+
+// 위 예외들은 inputstream 으로 read()를 할때 블로킹이 되는데, 이 블로킹 상태가 해체 되는 조건은 위 3가지 이다.
+// 따라서 위 3가지의 예외별로 서버에서도 예외처리를 해주어야 한다.
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
